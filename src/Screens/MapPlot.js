@@ -23,35 +23,17 @@ const pStyles = StyleSheet.create({
 });
 
 class MapPlot extends React.Component{
-  nav(passTheseCrates){
+  nav(objectToPass){
     this.props.navigator.push({
       id: 'list',
       passProps: {
-        crates: passTheseCrates,
+        crates: objectToPass,
       }
     })
   }
 
   constructor () {
     super()
-    /*  TODO:
-          1) Fetch from JSON - Do when crate x location model is established
-            2) check if async + create methods for loading data (to prepare for #3)
-            3) Filters and/or Search
-            4) Research on pictures from json (for crate pics)
-            5) Details.js (crate details)
-          5) code cleanup (consider global variables)
-          6) consider: dedicated search page (for UX)
-
-        NOW:
-          1) Toolbar
-          2) Basic Design
-
-        REMINDER:
-          - List.js has comment
-          - check if index can hold global variables
-          - search manipulates the json.
-    */
     const markers = [
       {title: "Makati", desc: "# of Crates", coords:{longitude:121.02444519999995, latitude:14.554729}},
       {title: "Pasig", desc: "# of Crates", coords:{longitude:121.08510969999998, latitude:14.5763768}}
@@ -59,23 +41,34 @@ class MapPlot extends React.Component{
     this.state = { markers };
   }
 
+  markers() {
+    var dummy = require('../Assets/dummy.json');
+    return Object.entries(dummy.data).map(([key, value], i) => {
+      return (
+        <MapView.Marker key={i} coordinate={value.coords} title={value.place}>
+          <MapView.Callout onPress={ () => this.nav(value.crates) } />
+        </MapView.Marker>
+      );
+    })
+  }
+
   render() {
     const { region } = this.props;
-    const aspectRatio = Dimensions.get('window').width / Dimensions.get('window').height
-    const latDelta = 0.0922
+    const aspectRatio = Dimensions.get('window').width / Dimensions.get('window').height;
+    const latDelta = 0.0922;
 
-    var passedObject = this.state.markers;
+    // var passedObject = this.state.markers;
 
-    let markers = this.state.markers.map((marker, i) => {
-      // return <Text key={i}>{row.name}: {row.text}</Text>
-      return (
-        <MapView.Marker key={i} coordinate={marker.coords}
-                          title={marker.title} description={marker.desc}>
-          <MapView.Callout onPress={ () => this.nav(passedObject) } />
-
-        </MapView.Marker>
-      )
-    })
+    // let markers = this.state.markers.map((marker, i) => {
+    //   // return <Text key={i}>{row.name}: {row.text}</Text>
+    //   return (
+    //     <MapView.Marker key={i} coordinate={marker.coords}
+    //                       title={marker.title} description={marker.desc}>
+    //       <MapView.Callout onPress={ () => this.nav(passedObject) } />
+    //
+    //     </MapView.Marker>
+    //   )
+    // })
 
     return (
       <View>
@@ -89,7 +82,7 @@ class MapPlot extends React.Component{
               longitudeDelta: 0.121, //Yolo
             }}
           >
-          { markers }
+          { this.markers() }
         </MapView>
       </View>
     );

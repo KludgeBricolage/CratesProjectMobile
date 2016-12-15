@@ -11,7 +11,7 @@ class LocationsProject extends React.Component {
   render() {
   return (
     <ReactNative.Navigator
-      initialRoute={{id: 'list'}}
+      initialRoute={{id: 'map'}}
       renderScene={this.navigatorRenderScene}/>
     );
   }

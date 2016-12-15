@@ -4,11 +4,11 @@ import React, { Component } from 'react'
 import { Container, Content, List, ListItem, Text } from 'native-base';
 
 class ListCrates extends React.Component{
-  nav(details){
+  nav(objectToPass){
     this.props.navigator.push({
       id: 'details',
       passProps: {
-        crate: details,
+        crate: objectToPass,
       }
     })
   }
@@ -16,13 +16,26 @@ class ListCrates extends React.Component{
   printJson() {
     var dummy = require('../Assets/dummy.json');
 
-
+    return Object.entries(this.props.crates).map(([key, val], i)   => {
+      return (
+        <ListItem key={'key-'+ i}>
+          <Text onPress={ () => this.nav(val) }>{val.title}</Text>
+        </ListItem>
+      );
+    })
+/*  //Practicing .map() ;; to practice: functional programming
     return Object.entries(dummy.data).map((key, i) => {
       return Object.entries(dummy.data[i]).map(([key, val], i)   => {
         if(key == "place") {
           return (
             <ListItem key={'key-'+ i}>
               <Text>{val}</Text>
+            </ListItem>
+          );
+        } else if(key == "coords") {
+          return (
+            <ListItem key={'key-'+ i}>
+              <Text>{val.latitude + " | " + val.longitude}</Text>
             </ListItem>
           );
         } else if(key == "crates") {
@@ -35,12 +48,10 @@ class ListCrates extends React.Component{
           })
         }
       })
-    })
+    })*/
   }
 
   render() {
-    // var items = this.props.crates;
-    var items = ['Simon Mignolet','Nathaniel Clyne','Dejan Lovren','Mama Sakho','Emre Can'];
     return (
       <Container>
         <Content>

@@ -6,9 +6,13 @@
 			"latitude": 14.554729
 		},
 		"crates": [{
-			"title": "Makati Crate#1"
+			"title": "Makati Crate#1",
+			"user": "Makati Boy #1",
+			"price": 2000
 		}, {
-			"title": "Makati Crate#2"
+			"title": "Makati Crate#2",
+			"user": "Makati Boy #2",
+			"price": 5555
 		}]
 	}, {
 		"place": "Pasig",
