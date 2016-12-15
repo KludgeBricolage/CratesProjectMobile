@@ -8,13 +8,12 @@ import {
   ToolbarAndroid
 } from 'react-native';
 
-var styles = require('./Style');
 
 class Details extends React.Component{
   render() {
     return (
       <View>
-        <ToolbarAndroid style={styles.toolbar} title={this.props.title}/>
+        <ToolbarAndroid title={this.props.title}/>
         <TouchableHighlight onPress={this.props.navigator.pop}>
           <Text>Go back to List</Text>
         </TouchableHighlight>

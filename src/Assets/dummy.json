@@ -1,0 +1,25 @@
+{
+	"data": [{
+		"place": "Makati",
+		"coords": {
+			"longitude": 121.02444519999995,
+			"latitude": 14.554729
+		},
+		"crates": [{
+			"title": "Makati Crate#1"
+		}, {
+			"title": "Makati Crate#2"
+		}]
+	}, {
+		"place": "Pasig",
+		"coords": {
+			"longitude": 121.08510969999998,
+			"latitude": 14.5763768
+		},
+		"crates": [{
+			"title": "Pasig Crate#1"
+		}, {
+			"title": "Pasig Crate#2"
+		}]
+	}]
+}

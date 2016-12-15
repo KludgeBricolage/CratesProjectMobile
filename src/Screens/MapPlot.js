@@ -11,7 +11,6 @@ import {
 import Dimensions from 'Dimensions';
 import MapView from 'react-native-maps';
 
-var styles = require('./Style');
 const pStyles = StyleSheet.create({
   map: {
     position: 'absolute',
@@ -80,7 +79,7 @@ class MapPlot extends React.Component{
 
     return (
       <View>
-        <ToolbarAndroid style={styles.toolbar} title={this.props.title}/>
+        <ToolbarAndroid  title={this.props.title}/>
         <MapView
             style={pStyles.map}
             initialRegion={{ //Map initialize (Coords are just above Mandaluyong)

@@ -3,15 +3,15 @@
 var React = require('react');
 var ReactNative = require('react-native');
 
-var List = require('./List');
-var Details = require('./Details');
-var MapPlot = require('./MapPlot');
+var ListCrates = require("./src/Screens/ListCrates");
+var Details = require("./src/Screens/Details");
+var MapPlot = require("./src/Screens/MapPlot");
 
 class LocationsProject extends React.Component {
   render() {
   return (
     <ReactNative.Navigator
-      initialRoute={{id: 'map'}}
+      initialRoute={{id: 'list'}}
       renderScene={this.navigatorRenderScene}/>
     );
   }
@@ -21,7 +21,7 @@ class LocationsProject extends React.Component {
       case 'map':
         return (<MapPlot navigator={navigator} title="Map" {...route.passProps}/>);
       case 'list':
-        return (<List navigator={navigator} title="List" {...route.passProps}/>);
+        return (<ListCrates navigator={navigator} title="ListCrates" {...route.passProps}/>);
       case 'details':
         return (<Details navigator={navigator} title="Details" {...route.passProps}/>);
     }
