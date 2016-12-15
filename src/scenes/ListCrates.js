@@ -14,12 +14,11 @@ class ListCrates extends React.Component{
   }
 
   printJson() {
-    var dummy = require('../Assets/dummy.json');
 
     return Object.entries(this.props.crates).map(([key, val], i)   => {
       return (
-        <ListItem key={'key-'+ i}>
-          <Text onPress={ () => this.nav(val) }>{val.title}</Text>
+        <ListItem key={'key-'+ i} onPress={ () => this.nav(val) }>
+          <Text>{val.title}</Text>
         </ListItem>
       );
     })

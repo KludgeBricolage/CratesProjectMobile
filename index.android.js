@@ -3,15 +3,16 @@
 var React = require('react');
 var ReactNative = require('react-native');
 
-var ListCrates = require("./src/Screens/ListCrates");
-var Details = require("./src/Screens/Details");
-var MapPlot = require("./src/Screens/MapPlot");
+var ListCrates = require("./src/scenes/ListCrates");
+var Details = require("./src/scenes/Details");
+var MapPlot = require("./src/scenes/MapPlot");
+var GlobalHeader = require("./src/components/GlobalHeader");
 
-class LocationsProject extends React.Component {
+export default class LocationsProject extends React.Component {
   render() {
   return (
     <ReactNative.Navigator
-      initialRoute={{id: 'map'}}
+      initialRoute={{id: 'details'}}
       renderScene={this.navigatorRenderScene}/>
     );
   }
@@ -24,6 +25,8 @@ class LocationsProject extends React.Component {
         return (<ListCrates navigator={navigator} title="ListCrates" {...route.passProps}/>);
       case 'details':
         return (<Details navigator={navigator} title="Details" {...route.passProps}/>);
+      case 'global':
+        return (<GlobalHeader navigator={navigator} title="Global Header" {...route.passProps}/>);
     }
   }
 }

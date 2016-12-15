@@ -42,7 +42,7 @@ class MapPlot extends React.Component{
   }
 
   markers() {
-    var dummy = require('../Assets/dummy.json');
+    var dummy = require('../assets/dummy.json');
     return Object.entries(dummy.data).map(([key, value], i) => {
       return (
         <MapView.Marker key={i} coordinate={value.coords} title={value.place}>
