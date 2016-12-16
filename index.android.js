@@ -1,13 +1,13 @@
 'use strict';
 
-var React = require('react');
-var ReactNative = require('react-native');
+import React from 'react';
+import ReactNative from 'react-native';
 
-var ListCrates = require("./src/Screens/ListCrates");
-var Details = require("./src/Screens/Details");
-var MapPlot = require("./src/Screens/MapPlot");
+import ListCrates from './src/scenes/ListCrates';
+import Details from './src/scenes/Details';
+import MapPlot from './src/scenes/MapPlot';
 
-class LocationsProject extends React.Component {
+export default class LocationsProject extends React.Component {
   render() {
   return (
     <ReactNative.Navigator
