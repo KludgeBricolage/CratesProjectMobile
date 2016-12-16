@@ -28,7 +28,7 @@ class ListCrates extends React.Component{
     return (
       <Container>
         { GlobalHeader(this.props.navigator, this.props.title) }
-        <Content theme={ LightTheme }>
+        <Content>
           <List>{this.getCrates()}</List>
         </Content>
       </Container>
