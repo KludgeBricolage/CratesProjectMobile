@@ -1,15 +1,24 @@
 # CratesProjectMobile
 Mobile Module
 
-Uses React Native.
+Uses React Native. Will soon grab data from the web's REST API.
 
 Install:
   - Get ReactNative to work
+  - Emulator should use Host GPU (ReactNativeMaps quickfix)
   - git clone <this project>
   - cd <to project> && rnpm link
 Update Log:
-  - realistic dummy data is now being manipulated throughout the app
-  - huge commented out section at ListCrates (used to practice mapping)
-
+  - Implemented NativeBase
+  - The 'huge comment' was removed. Check history for reference.
+  - Added icons
+  - GlobalHeader
 Next:
-  - Using NativeBase
+  - Adding Header functionality
+  - Changing the dummy.json to be more realistic (in preparation for filtering and searching)
+
+React Native fixes:
+  - watchman watch-del-all
+  - rm -fr $TMPDIR/react-*
+  - npm cache clean
+  - cd android/ && ./gradlew clean 
