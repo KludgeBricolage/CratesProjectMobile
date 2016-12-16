@@ -1,7 +1,8 @@
-'use strict';
-
 import React, { Component } from 'react'
 import { Container, Content, List, ListItem, Text } from 'native-base';
+
+import GlobalHeader from "../components/GlobalHeader";
+import LightTheme from '../themes/light';
 
 class ListCrates extends React.Component{
   nav(objectToPass){
@@ -13,8 +14,7 @@ class ListCrates extends React.Component{
     })
   }
 
-  printJson() {
-
+  getCrates() {
     return Object.entries(this.props.crates).map(([key, val], i)   => {
       return (
         <ListItem key={'key-'+ i} onPress={ () => this.nav(val) }>
@@ -22,39 +22,14 @@ class ListCrates extends React.Component{
         </ListItem>
       );
     })
-/*  //Practicing .map() ;; to practice: functional programming
-    return Object.entries(dummy.data).map((key, i) => {
-      return Object.entries(dummy.data[i]).map(([key, val], i)   => {
-        if(key == "place") {
-          return (
-            <ListItem key={'key-'+ i}>
-              <Text>{val}</Text>
-            </ListItem>
-          );
-        } else if(key == "coords") {
-          return (
-            <ListItem key={'key-'+ i}>
-              <Text>{val.latitude + " | " + val.longitude}</Text>
-            </ListItem>
-          );
-        } else if(key == "crates") {
-          return Object.entries(val).map(([key, val], i)   => {
-            return (
-              <ListItem key={'key-'+ i}>
-                <Text>{val.title + ""}</Text>
-              </ListItem>
-            );
-          })
-        }
-      })
-    })*/
   }
 
   render() {
     return (
       <Container>
-        <Content>
-          <List>{this.printJson()}</List>
+        { GlobalHeader(this.props.navigator, this.props.title) }
+        <Content theme={ LightTheme }>
+          <List>{this.getCrates()}</List>
         </Content>
       </Container>
     );

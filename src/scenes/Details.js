@@ -10,7 +10,7 @@ export default class Details extends React.Component {
   render() {
     return (
       <Container>
-        <GlobalHeader />
+      { GlobalHeader(this.props.navigator, this.props.title) }
         <Content>
             <List dataArray={this.props.crate}
                 renderRow={(item) =>
