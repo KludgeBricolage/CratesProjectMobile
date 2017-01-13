@@ -12,7 +12,7 @@ export default class LocationsProject extends React.Component {
   render() {
   return (
     <ReactNative.Navigator
-      initialRoute={{id: 'drawer'}}
+      initialRoute={{id: 'details'}}
       renderScene={this.navigatorRenderScene}/>
     );
   }
