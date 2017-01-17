@@ -1,20 +1,22 @@
-import React from 'react';
-import { DrawerLayoutAndroid } from 'react-native';
-import { Container, Content, List, ListItem, Text, Header, Title, Button, Icon } from 'native-base';
+import React                                                      from 'react';
+import { DrawerLayoutAndroid, Dimensions }                        from 'react-native';
+import { Container, Content, Text, Header, Title, Button, Icon }  from 'native-base';
 
 export default function (props, content) {
 
-  const openDrawer  = (event) => { this.drawer.openDrawer(); }
-  const closeDrawer = (event) => { this.drawer.closeDrawer(); }
+  const openDrawer  = (event) => { this.drawer.openDrawer() }
+  const closeDrawer = (event) => { this.drawer.closeDrawer() }
+
+  var {height, width} = Dimensions.get('window')
 
   var navigationView = (
-      <Content>
-          <Text>Im in the Drawer!</Text>
+    <Content>
+      <Text>Im in the Drawer!</Text>
 
-          <Button onPress={closeDrawer}>
-              Close
-          </Button>
-      </Content>
+      <Button onPress={closeDrawer}>
+          Close
+      </Button>
+    </Content>
   );
 
   function renderBackButton() {
@@ -23,14 +25,14 @@ export default function (props, content) {
         <Button transparent onPress={props.navigator.pop}>
           <Icon name='ios-arrow-back'/>
         </Button>
-      )
+      );
     }
   }
 
   return (
     <DrawerLayoutAndroid
       ref={(_drawer) => this.drawer = _drawer}
-      drawerWidth={300}
+      drawerWidth={width * .5}
       drawerPosition={DrawerLayoutAndroid.positions.Right}
       renderNavigationView={() => navigationView}>
           <Header iconRight>
@@ -46,5 +48,5 @@ export default function (props, content) {
             { content }
           </Content>
     </DrawerLayoutAndroid>
-  );
+  )
 }

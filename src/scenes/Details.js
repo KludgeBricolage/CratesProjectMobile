@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Container, Content, List, ListItem, Text, Header, Title, Button, Icon } from 'native-base';
+import React, { Component }               from 'react';
+import { List, ListItem, Text, Button }   from 'native-base';
 
 import GlobalHeader from "../components/GlobalHeader";
 
 export default class Details extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
   render() {
     var content = (
@@ -14,8 +14,8 @@ export default class Details extends React.Component {
 
     return (
       GlobalHeader(this.props, content)
-    );
+    )
   }
 }
 
-module.exports = Details;
+module.exports = Details

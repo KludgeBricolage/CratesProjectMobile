@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Container, Content, List, ListItem, Text } from 'native-base';
+import React, { Component }       from 'react'
+import { List, ListItem, Text }   from 'native-base';
 
 import GlobalHeader from "../components/GlobalHeader";
 
@@ -19,7 +19,7 @@ class ListCrates extends React.Component{
         <ListItem key={'key-'+ i} onPress={ () => this.nav(val) }>
           <Text>{val.title}</Text>
         </ListItem>
-      );
+      )
     })
   }
 
@@ -30,8 +30,8 @@ class ListCrates extends React.Component{
 
     return (
       GlobalHeader(this.props, content)
-    );
+    )
   }
-};
+}
 
-module.exports = ListCrates;
+module.exports = ListCrates

@@ -1,23 +1,17 @@
 'use strict';
 
 import React, { Component } from 'react'
-import { StyleSheet } from 'react-native';
+import { StyleSheet }       from 'react-native';
+import Dimensions           from 'Dimensions';
+import MapView              from 'react-native-maps';
+import GlobalHeader         from "../components/GlobalHeader";
 
-import GlobalHeader from "../components/GlobalHeader";
-
-import Dimensions from 'Dimensions';
-import MapView from 'react-native-maps';
-import { Container, Content, List, ListItem, Text, Header, Title, Button, Icon } from 'native-base';
-
-const pStyles = StyleSheet.create({
+const style = StyleSheet.create({
   map: {
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
+    width: Dimensions.get('window').width,
     height: Dimensions.get('window').height
   },
-});
+})
 
 class MapPlot extends React.Component{
   nav(objectToPass){
@@ -36,29 +30,29 @@ class MapPlot extends React.Component{
         <MapView.Marker key={i} coordinate={value.coords} title={value.place}>
           <MapView.Callout onPress={ () => this.nav(value.crates) } />
         </MapView.Marker>
-      );
+      )
     })
   }
 
   render() {
     var content = (
       <MapView
-        style={pStyles.map}
+        style={style.map}
         initialRegion={{ //Map initialize (Coords are just above Mandaluyong)
           latitude: 14.5994443,
           longitude: 121.03591740000002,
-          latitudeDelta: 0.1722, //Yolo
-          longitudeDelta: 0.121, //Yolo
+          latitudeDelta: 0.1722,
+          longitudeDelta: 0.121,
         }}
       >
         { this.markers() }
       </MapView>
-    )
+    );
 
     return (
       GlobalHeader(this.props, content)
-    );
+    )
   }
-};
+}
 
-module.exports = MapPlot;
+module.exports = MapPlot
