@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Container, Content, List, ListItem, Text } from 'native-base';
 
 import GlobalHeader from "../components/GlobalHeader";
-import LightTheme from '../themes/light';
 
 class ListCrates extends React.Component{
   nav(objectToPass){
@@ -25,13 +24,12 @@ class ListCrates extends React.Component{
   }
 
   render() {
+    var content = (
+      <List>{this.getCrates()}</List>
+    )
+
     return (
-      <Container>
-        { GlobalHeader(this.props.navigator, this.props.title) }
-        <Content>
-          <List>{this.getCrates()}</List>
-        </Content>
-      </Container>
+      GlobalHeader(this.props, content)
     );
   }
 };

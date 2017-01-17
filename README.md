@@ -3,8 +3,12 @@ Mobile Module
 
 Uses React Native. Will soon grab data from the web's REST API.
 
+Versions:
+  - react-native-cli: 1.2.0
+  - react-native: 0.38.0
+
 Install:
-  - Get ReactNative to work
+  - Get ReactNative to work :: http://facebook.github.io/react-native/releases/0.38/docs/getting-started.html#content
   - Emulator should use Host GPU (ReactNativeMaps quickfix)
   - git clone <this project>
   - cd <to project> && rnpm link
@@ -16,11 +20,9 @@ React Native fixes:
   - cd android/ && ./gradlew clean
 
 Update Log:
-  - Header can go back :: Map (main) is on TODO
-  - GlobalHeader can now user Drawer.
-  - Can now delete temporary file: src/scenes/Drawer.js
+  - All Scenes can now use the Drawer (header functionality)
+  - Deleted temporary file: src/scenes/Drawer.js
 
 TODO:
   - Changing the dummy.json to be more realistic (in preparation for filtering and searching)
-  - Think of a function to replace Map's back (since no back on main page) OR pull-right if button is just one
-  - Find a better way to dynamically display data.
+  - Drawer content and Details design

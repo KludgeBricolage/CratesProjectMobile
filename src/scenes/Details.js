@@ -8,8 +8,12 @@ export default class Details extends React.Component {
     super(props);
   }
   render() {
+    var content = (
+      <Button>Hello World</Button>
+    )
+
     return (
-      GlobalHeader(this.props)
+      GlobalHeader(this.props, content)
     );
   }
 }

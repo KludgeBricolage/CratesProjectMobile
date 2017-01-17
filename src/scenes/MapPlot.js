@@ -41,23 +41,22 @@ class MapPlot extends React.Component{
   }
 
   render() {
+    var content = (
+      <MapView
+        style={pStyles.map}
+        initialRegion={{ //Map initialize (Coords are just above Mandaluyong)
+          latitude: 14.5994443,
+          longitude: 121.03591740000002,
+          latitudeDelta: 0.1722, //Yolo
+          longitudeDelta: 0.121, //Yolo
+        }}
+      >
+        { this.markers() }
+      </MapView>
+    )
+
     return (
-      <Container>
-        { GlobalHeader(this.props.navigator, this.props.title) }
-        <Content>
-          <MapView
-            style={pStyles.map}
-            initialRegion={{ //Map initialize (Coords are just above Mandaluyong)
-              latitude: 14.5994443,
-              longitude: 121.03591740000002,
-              latitudeDelta: 0.1722, //Yolo
-              longitudeDelta: 0.121, //Yolo
-            }}
-          >
-            { this.markers() }
-          </MapView>
-        </Content>
-      </Container>
+      GlobalHeader(this.props, content)
     );
   }
 };
