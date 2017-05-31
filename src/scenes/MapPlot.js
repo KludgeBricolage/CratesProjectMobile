@@ -27,7 +27,9 @@ class MapPlot extends React.Component{
     var dummy = require('../assets/dummy.json');
     return Object.entries(dummy.data).map(([key, value], i) => {
       return (
-        <MapView.Marker key={i} coordinate={value.coords} title={value.place}>
+        <MapView.Marker key={i} coordinate={
+          {longitude: Number.parseFloat(value.longitude), latitude: Number.parseFloat(value.latitude)}
+        } title={value.place}>
           <MapView.Callout onPress={ () => this.nav(value.crates) } />
         </MapView.Marker>
       )

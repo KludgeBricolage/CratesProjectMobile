@@ -1,29 +1,31 @@
 {
 	"data": [{
-		"place": "Makati",
-		"coords": {
-			"longitude": 121.02444519999995,
-			"latitude": 14.554729
-		},
-		"crates": [{
-			"title": "Makati Crate#1",
-			"user": "Makati Boy #1",
-			"price": 2000
-		}, {
-			"title": "Makati Crate#2",
-			"user": "Makati Boy #2",
-			"price": 5555
-		}]
-	}, {
-		"place": "Pasig",
-		"coords": {
-			"longitude": 121.08510969999998,
-			"latitude": 14.5763768
-		},
-		"crates": [{
-			"title": "Pasig Crate#1"
-		}, {
-			"title": "Pasig Crate#2"
+		"place":"Pasig",
+		"longitude":"121.08510969999998",
+		"latitude":"14.5763768",
+		"crates":[
+		{
+			"id":3,
+			"user":4,
+			"name":"Ebata Miku",
+			"description":"1/7 Hatsune Miku - Ebata risa ver. - by Max Factory\r\n\r\nFigure undamaged, looks like new\r\n\r\nMeetups\r\nSM fairview/ Fairview terrace/ Robinson Fairview\r\nSM north edsa",
+			"created_at":"May 29 2017 02:38AM",
+			"states":"Selling",
+			"quality":"New",
+			"price":"5100.0",
+			"category":"Art",
+			"tags":["miku","maxfactory"]
+		},{
+			"id":2,
+			"user":2,
+			"name":"Xperia Z1",
+			"description":"old phone of myne",
+			"created_at":"May 13 2017 04:28AM",
+			"states":"Buying",
+			"quality":"2nd hand",
+			"price":"2000.0",
+			"category":"Technology",
+			"tags":["xperia","sony","phone"]
 		}]
 	}]
 }
