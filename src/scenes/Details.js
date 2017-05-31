@@ -7,9 +7,20 @@ export default class Details extends React.Component {
   constructor(props) {
     super(props)
   }
+
+  getCrates() {
+    return Object.entries(this.props.crate).map(([key, val], i)   => {
+      return (
+        <ListItem key={'key-'+ i}>
+          <Text>{val}</Text>
+        </ListItem>
+      )
+    })
+  }
+
   render() {
     var content = (
-      <Button>Hello World</Button>
+      <List>{this.getCrates()}</List>
     )
 
     return (

@@ -17,7 +17,7 @@ class ListCrates extends React.Component{
     return Object.entries(this.props.crates).map(([key, val], i)   => {
       return (
         <ListItem key={'key-'+ i} onPress={ () => this.nav(val) }>
-          <Text>{val.title}</Text>
+          <Text>{val.name}</Text>
         </ListItem>
       )
     })
