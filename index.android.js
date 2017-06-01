@@ -20,7 +20,7 @@ export default class LocationsProject extends React.Component {
   }
 
   render() {
-    return <ReactNative.Navigator initialRoute={{id: 'map'}} renderScene={this.navigatorRenderScene}/>
+    return <ReactNative.Navigator initialRoute={{id: 'details'}} renderScene={this.navigatorRenderScene}/>
   }
 }
 

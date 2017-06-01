@@ -20,9 +20,11 @@ React Native fixes:
   - cd android/ && ./gradlew clean
 
 Update Log:
-  - All Scenes can now use the Drawer (header functionality)
-  - Deleted temporary file: src/scenes/Drawer.js
+  - Getting REST data from endpoint now working
+  - Details design
+    - Structure
+    - Name, date, partial images
 
 TODO:
-  - Changing the dummy.json to be more realistic (in preparation for filtering and searching)
-  - Drawer content and Details design
+  - Complete Details design
+  - Drawer content: Search
