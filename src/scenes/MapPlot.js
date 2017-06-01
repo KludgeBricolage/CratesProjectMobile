@@ -14,23 +14,57 @@ const style = StyleSheet.create({
 })
 
 class MapPlot extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = { locations: [] };
+  }
+
+  componentDidMount() {
+    let options = { method: 'POST' }
+    fetch("https://762d6c54.ngrok.io/api/v1/locations", options)
+      .then( (response) => response.json() )
+      .then( (responseJson) => {
+        this.setState({ locations: responseJson.locations })
+      }).catch((error) => {
+        console.error(error);
+      });
+  }
+
   nav(objectToPass){
     this.props.navigator.push({
       id: 'list',
       passProps: {
-        crates: objectToPass,
+        crates: objectToPass
       }
     })
   }
 
+  getCrates(value) {
+    let options = {
+      method: 'POST',
+      body: JSON.stringify({
+        place: value.name,
+        longitude: value.lng,
+        latitude: value.lat
+      })
+    }
+    fetch("https://762d6c54.ngrok.io/api/v1/pulls", options)
+      .then( (response) => response.json() )
+      .then( (responseJson) => {
+        this.nav(responseJson.crates)
+      }).catch((error) => {
+        console.error(error);
+      });
+  }
+
   markers() {
-    var dummy = require('../assets/dummy.json');
-    return Object.entries(dummy.data).map(([key, value], i) => {
+    var dummy = require('../assets/map.json');
+    return Object.entries(this.state.locations).map(([key, value], i) => {
       return (
         <MapView.Marker key={i} coordinate={
-          {longitude: Number.parseFloat(value.longitude), latitude: Number.parseFloat(value.latitude)}
-        } title={value.place}>
-          <MapView.Callout onPress={ () => this.nav(value.crates) } />
+          {longitude: Number.parseFloat(value.lng), latitude: Number.parseFloat(value.lat)}
+        } title={value.name}>
+          <MapView.Callout onPress={ () => {this.getCrates(value)} } />
         </MapView.Marker>
       )
     })
