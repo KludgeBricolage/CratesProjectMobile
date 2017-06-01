@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Image } from 'react-native';
+import { Image } from 'react-native';
+import ImageSlider from 'react-native-image-slider';
 import { Content, Text, Button, Card, CardItem } from 'native-base';
 
 import GlobalHeader from "../components/GlobalHeader";
@@ -22,7 +23,7 @@ export default class Details extends React.Component {
           <Text note>{ crate.created_at }</Text>
         </CardItem>
         <CardItem cardBody>
-          <Image source={{uri: crate.pictures[0] }} />
+          <ImageSlider images={ crate.pictures }/>
         </CardItem>
       </Card>
     )
