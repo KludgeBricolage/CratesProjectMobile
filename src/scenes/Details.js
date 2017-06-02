@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { StyleSheet } from 'react-native';
 import ImageSlider from 'react-native-image-slider';
-import { Content, Text, Button, Card, CardItem } from 'native-base';
+import { Content, Text, Button, Card, CardItem, Badge } from 'native-base';
 
 import GlobalHeader from "../components/GlobalHeader";
 
@@ -18,12 +18,23 @@ export default class Details extends React.Component {
 
     var content = (
       <Card style={{ flex: 0 }}>
-        <CardItem>
-          <Text>{ crate.name }</Text>
-          <Text note>{ crate.created_at }</Text>
+        <CardItem style={[styles.inline]}>
+          <Badge info>{ crate.states }</Badge>
+          <Text style={[styles.name]}>  { crate.name }</Text>
+          <Text note>by { crate.user.alias }</Text>
         </CardItem>
-        <CardItem cardBody>
+        <CardItem>
           <ImageSlider images={ crate.pictures }/>
+        </CardItem>
+        <CardItem>
+          <Text>{ crate.description }</Text>
+        </CardItem>
+        <CardItem style={[styles.inline]}>
+        {
+          crate.tags.map((tag, i) =>
+            <Badge warning key={'key-'+ i} style={{marginRight: 7}}>{tag}</Badge>
+          )
+        }
         </CardItem>
       </Card>
     )
@@ -33,5 +44,16 @@ export default class Details extends React.Component {
     )
   }
 }
+
+var styles = StyleSheet.create({
+  inline: {
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    flexDirection:'row',
+  },
+  name: {
+    flexGrow: 5
+  }
+})
 
 module.exports = Details
