@@ -7,7 +7,8 @@ export default function (props, content) {
   const openDrawer  = (event) => { this.drawer.openDrawer() }
   const closeDrawer = (event) => { this.drawer.closeDrawer() }
 
-  var query = JSON.stringify({q: '' })
+  var query = {q: '' }
+
   function search() {
     let options = {
       method: 'POST',
@@ -20,7 +21,12 @@ export default function (props, content) {
     fetch("https://122fa4e0.ngrok.io/api/v1/search", options)
       .then( (response) => response.json() )
       .then( (responseJson) => {
-        alert(JSON.stringify(responseJson.crates))
+        props.navigator.push({
+          id: 'list',
+          passProps: {
+            crates: responseJson.crates
+          }
+        })
       }).catch((error) => {
         console.error(error);
       });
@@ -30,23 +36,21 @@ export default function (props, content) {
 
   var navigationView = (
     <Content>
-      <Text>Im in the Drawer!</Text>
+      <InputGroup>
+        <Input
+          placeholder="Search"
+          onChangeText={(q)=> query = {q}}
+        />
+        <Icon name="ios-search" onPress={search}/>
+      </InputGroup>
+      <Button onPress={search}>
+        Search
+      </Button>
 
       <Button onPress={closeDrawer}>
           Close
       </Button>
 
-      <InputGroup>
-        <Icon name="ios-search" />
-        <Input
-          placeholder="Search"
-          onChangeText={(q)=> query = {q}}
-        />
-        <Icon name="ios-people" />
-      </InputGroup>
-      <Button transparent onPress={search}>
-        Search
-      </Button>
     </Content>
   );
 
