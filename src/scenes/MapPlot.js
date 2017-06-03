@@ -21,7 +21,7 @@ class MapPlot extends React.Component{
 
   componentDidMount() {
     let options = { method: 'POST' }
-    fetch("https://762d6c54.ngrok.io/api/v1/locations", options)
+    fetch("https://122fa4e0.ngrok.io/api/v1/locations", options)
       .then( (response) => response.json() )
       .then( (responseJson) => {
         this.setState({ locations: responseJson.locations })
@@ -42,13 +42,17 @@ class MapPlot extends React.Component{
   getCrates(value) {
     let options = {
       method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         place: value.name,
         longitude: value.lng,
         latitude: value.lat
       })
     }
-    fetch("https://762d6c54.ngrok.io/api/v1/pulls", options)
+    fetch("https://122fa4e0.ngrok.io/api/v1/pulls", options)
       .then( (response) => response.json() )
       .then( (responseJson) => {
         this.nav(responseJson.crates)

@@ -1,11 +1,30 @@
 import React                                                      from 'react';
 import { DrawerLayoutAndroid, Dimensions }                        from 'react-native';
-import { Container, Content, Text, Header, Title, Button, Icon }  from 'native-base';
+import { Container, Content, Text, Header, Title, Button, Icon, InputGroup, Input }  from 'native-base';
 
 export default function (props, content) {
 
   const openDrawer  = (event) => { this.drawer.openDrawer() }
   const closeDrawer = (event) => { this.drawer.closeDrawer() }
+
+  var query = JSON.stringify({q: '' })
+  function search() {
+    let options = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(query)
+    }
+    fetch("https://122fa4e0.ngrok.io/api/v1/search", options)
+      .then( (response) => response.json() )
+      .then( (responseJson) => {
+        alert(JSON.stringify(responseJson.crates))
+      }).catch((error) => {
+        console.error(error);
+      });
+  }
 
   var {height, width} = Dimensions.get('window')
 
@@ -15,6 +34,18 @@ export default function (props, content) {
 
       <Button onPress={closeDrawer}>
           Close
+      </Button>
+
+      <InputGroup>
+        <Icon name="ios-search" />
+        <Input
+          placeholder="Search"
+          onChangeText={(q)=> query = {q}}
+        />
+        <Icon name="ios-people" />
+      </InputGroup>
+      <Button transparent onPress={search}>
+        Search
       </Button>
     </Content>
   );
