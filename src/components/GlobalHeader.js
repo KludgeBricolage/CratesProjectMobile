@@ -1,13 +1,25 @@
-import React                                                      from 'react';
-import { DrawerLayoutAndroid, Dimensions }                        from 'react-native';
-import { Container, Content, Text, Header, Title, Button, Icon, InputGroup, Input }  from 'native-base';
+import React from 'react';
+import { DrawerLayoutAndroid, Dimensions, StyleSheet } from 'react-native';
+import { Container, Content, Text, Header, Title, Button, Icon, InputGroup, Input } from 'native-base';
 
 export default function (props, content) {
-
+  const GLOBAL = require('../components/Global');
   const openDrawer  = (event) => { this.drawer.openDrawer() }
   const closeDrawer = (event) => { this.drawer.closeDrawer() }
 
   var query = {q: '' }
+
+  var styles = StyleSheet.create({
+    inline: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    name: {
+      flexGrow: 5
+    }
+  })
+
 
   function search() {
     let options = {
@@ -18,7 +30,7 @@ export default function (props, content) {
       },
       body: JSON.stringify(query)
     }
-    fetch("https://122fa4e0.ngrok.io/api/v1/search", options)
+    fetch(GLOBAL.NGROK_URL + "/api/v1/search", options)
       .then( (response) => response.json() )
       .then( (responseJson) => {
         props.navigator.push({
@@ -36,21 +48,13 @@ export default function (props, content) {
 
   var navigationView = (
     <Content>
-      <InputGroup>
+      <InputGroup style={[styles.inline]}>
         <Input
           placeholder="Search"
           onChangeText={(q)=> query = {q}}
         />
         <Icon name="ios-search" onPress={search}/>
       </InputGroup>
-      <Button onPress={search}>
-        Search
-      </Button>
-
-      <Button onPress={closeDrawer}>
-          Close
-      </Button>
-
     </Content>
   );
 
@@ -77,11 +81,20 @@ export default function (props, content) {
               <Icon name='ios-menu' />
             </Button>
 
-            <Title>{props.title}</Title>
+            <Title>{props.title} {GLOBAL.HOST_URL}</Title>
           </Header>
           <Content>
             { content }
           </Content>
     </DrawerLayoutAndroid>
   )
+
+  var styles = StyleSheet.create({
+    inline: {
+      flexWrap: 'wrap',
+      alignItems: 'flex-start',
+      flexDirection:'row',
+    }
+  })
+
 }

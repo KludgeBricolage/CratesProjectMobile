@@ -12,15 +12,15 @@ export default class Details extends React.Component {
 
   render() {
     //temporary
-    var dummy = require('../assets/crates.json');
-    const crate = dummy.crates[0]
-    // const crate = this.props.crate
+    // var dummy = require('../assets/crates.json');
+    // const crate = dummy.crates[0]
+    const crate = this.props.crate
 
     var content = (
       <Card style={{ flex: 0 }}>
         <CardItem style={[styles.inline]}>
           <Badge info>{ crate.states }</Badge>
-          <Text style={[styles.name]}>  { crate.name }</Text>
+          <Text style={[styles.name]}>{ crate.name }</Text>
           <Text note>by { crate.user.alias }</Text>
         </CardItem>
         <CardItem>

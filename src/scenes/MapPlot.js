@@ -6,6 +6,7 @@ import Dimensions           from 'Dimensions';
 import MapView              from 'react-native-maps';
 import GlobalHeader         from "../components/GlobalHeader";
 
+const GLOBAL = require('../components/Global');
 const style = StyleSheet.create({
   map: {
     width: Dimensions.get('window').width,
@@ -21,7 +22,7 @@ class MapPlot extends React.Component{
 
   componentDidMount() {
     let options = { method: 'POST' }
-    fetch("https://122fa4e0.ngrok.io/api/v1/locations", options)
+    fetch(GLOBAL.NGROK_URL + "/api/v1/locations", options)
       .then( (response) => response.json() )
       .then( (responseJson) => {
         this.setState({ locations: responseJson.locations })
@@ -52,7 +53,7 @@ class MapPlot extends React.Component{
         latitude: value.lat
       })
     }
-    fetch("https://122fa4e0.ngrok.io/api/v1/pulls", options)
+    fetch(GLOBAL.NGROK_URL + "/api/v1/pulls", options)
       .then( (response) => response.json() )
       .then( (responseJson) => {
         this.nav(responseJson.crates)
