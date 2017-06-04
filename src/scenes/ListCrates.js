@@ -14,13 +14,21 @@ class ListCrates extends React.Component{
   }
 
   getCrates() {
-    return Object.entries(this.props.crates).map(([key, val], i)   => {
+    if(this.props.crates == "" || this.props.crates == 0) {
       return (
-        <ListItem key={'key-'+ i} onPress={ () => this.nav(val) }>
-          <Text>{val.name}</Text>
+        <ListItem key='0' onPress={ this.props.navigator.pop }>
+          <Text>There are no Crates at this location.</Text>
         </ListItem>
       )
-    })
+    } else {
+      return Object.entries(this.props.crates).map(([key, val], i)   => {
+        return (
+          <ListItem key={'key-'+ i} onPress={ () => this.nav(val) }>
+            <Text>{val.name}</Text>
+          </ListItem>
+        )
+      })
+    }
   }
 
   render() {
