@@ -13,9 +13,9 @@ export default class LocationsProject extends React.Component {
       case 'map':
         return <MapPlot    navigator={navigator}   title="Map"         {...route.passProps}/>
       case 'list':
-        return <ListCrates navigator={navigator}   title="ListCrates"  {...route.passProps}/>
+        return <ListCrates navigator={navigator}   title="List of Crates"  {...route.passProps}/>
       case 'details':
-        return <Details    navigator={navigator}   title="Details"     {...route.passProps}/>
+        return <Details    navigator={navigator}   title="Crate Details"     {...route.passProps}/>
     }
   }
 

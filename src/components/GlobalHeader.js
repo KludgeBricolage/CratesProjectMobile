@@ -1,5 +1,5 @@
 import React from 'react';
-import { DrawerLayoutAndroid, Dimensions, StyleSheet } from 'react-native';
+import { DrawerLayoutAndroid, Dimensions } from 'react-native';
 import { Container, Content, Text, Header, Title, Button, Icon, InputGroup, Input } from 'native-base';
 
 export default function (props, content) {
@@ -8,18 +8,6 @@ export default function (props, content) {
   const closeDrawer = (event) => { this.drawer.closeDrawer() }
 
   var query = {q: '' }
-
-  var styles = StyleSheet.create({
-    inline: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-    name: {
-      flexGrow: 5
-    }
-  })
-
 
   function search() {
     let options = {
@@ -48,7 +36,7 @@ export default function (props, content) {
 
   var navigationView = (
     <Content>
-      <InputGroup style={[styles.inline]}>
+      <InputGroup>
         <Input
           placeholder="Search"
           onChangeText={(q)=> query = {q}}
@@ -88,13 +76,4 @@ export default function (props, content) {
           </Content>
     </DrawerLayoutAndroid>
   )
-
-  var styles = StyleSheet.create({
-    inline: {
-      flexWrap: 'wrap',
-      alignItems: 'flex-start',
-      flexDirection:'row',
-    }
-  })
-
 }

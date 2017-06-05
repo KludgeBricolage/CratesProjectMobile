@@ -29,6 +29,22 @@ export default class Details extends React.Component {
         <CardItem>
           <Text>{ crate.description }</Text>
         </CardItem>
+        <CardItem>
+          <Text>
+            Price: { crate.price }
+          </Text>
+          <Text>
+            Mobile: { crate.user.mobile }
+          </Text>
+        </CardItem>
+        <CardItem>
+          <Text>
+            Quality: { crate.quality }
+          </Text>
+          <Text>
+            Category: { crate.category }
+          </Text>
+        </CardItem>
         <CardItem style={[styles.inline]}>
         {
           crate.tags.map((tag, i) =>

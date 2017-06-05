@@ -1,3 +1,3 @@
 module.exports = {
-  NGROK_URL: 'https://79da5f3c.ngrok.io',
+  NGROK_URL: 'https://a3f14072.ngrok.io',
 };
