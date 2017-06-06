@@ -19,7 +19,7 @@ export default class Details extends React.Component {
     var content = (
       <Card style={{ flex: 0 }}>
         <CardItem style={[styles.inline]}>
-          <Badge info>{ crate.states }</Badge>
+          <Badge info style={{marginRight: 7}}>{ crate.states }</Badge>
           <Text style={[styles.name]}>{ crate.name }</Text>
           <Text note>by { crate.user.alias }</Text>
         </CardItem>
