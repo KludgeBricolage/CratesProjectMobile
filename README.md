@@ -30,5 +30,6 @@ ReactNative isn't taught at iACADEMY so we apologize in advance.
 We used our thesis as an opportunity to learn about languages and technologies not taught at iACADEMY.  
 
 If you are an iACADEMY student looking to contact us:  
-1. Create an `Issue` here on GitHub or  
-2. Find my details at iACADEMY; my student id is `2013-01146`  
+- Create an `Issue` here on GitHub  
+- Find my details at iACADEMY; my student id is `2013-01146`  
+- Email my public Github Email
